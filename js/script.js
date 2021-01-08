@@ -12,14 +12,15 @@ let gridCount = 16;
 
 output.innerHTML = slider.value;
 
+//Slider for grid number change
 slider.oninput = function() {
 	let gridDivs = document.querySelectorAll('.grid');
 	gridDivs.forEach(gridDiv => gridDiv.remove());
   	output.innerHTML = this.value;
-  	//createGrid(parseInt(this.value));
   	createGrid(slider.value);
 }
 
+//Top button event handlers
 redButton.addEventListener('click', function(e){
 	return event = e.target.dataset.color;
 });
@@ -38,6 +39,7 @@ randomButton.addEventListener('click', function(e){
 
 reset.addEventListener('click', resetColor);
 
+//Create the grid function
 function createGrid(gridNumber){
 	let gridArea = gridNumber * gridNumber;
 	for(let i = 0; i < gridArea; i++ ){
@@ -50,6 +52,7 @@ function createGrid(gridNumber){
 	}
 }
 
+//Change color
 function changeColor(){
 	this.style.backgroundColor = "grey";
 
@@ -65,11 +68,10 @@ function changeColor(){
 	}
 }
 
-
-
+//Reset the grid board
 function resetColor(){
 	let gridDivs = document.querySelectorAll('.grid');
 	gridDivs.forEach(gridDiv => gridDiv.style.backgroundColor = '#ffffff');
 }
-
+ //Grid function called
 createGrid(gridCount);
